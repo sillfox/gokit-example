@@ -101,7 +101,7 @@ func encodeResponse(_ context.Context, w http.ResponseWriter, response interface
 
 func main() {
 	svc := stringService{}
-	uppcaseHandler := httptransport.NewServer(
+	uppercaseHandler := httptransport.NewServer(
 		makeUppercaseEndpoint(svc),
 		decodeUppercaseRequest,
 		encodeResponse,
@@ -112,7 +112,7 @@ func main() {
 		encodeResponse,
 	)
 
-	http.Handle("/uppercase", uppcaseHandler)
+	http.Handle("/uppercase", uppercaseHandler)
 	http.Handle("/count", countHandler)
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }
