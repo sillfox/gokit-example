@@ -39,7 +39,7 @@ func main() {
 	var count endpoint.Endpoint
 	count = makeCountEndpoint(svc)
 	count = loggingMiddleware(log.With(logger, "method", "count"))(count)
-	uppcaseHandler := httptransport.NewServer(
+	uppercaseHandler := httptransport.NewServer(
 		uppercase,
 		decodeUppercaseRequest,
 		encodeResponse,
@@ -50,7 +50,7 @@ func main() {
 		encodeResponse,
 	)
 
-	http.Handle("/uppercase", uppcaseHandler)
+	http.Handle("/uppercase", uppercaseHandler)
 	http.Handle("/count", countHandler)
 	http.ListenAndServe(":8080", nil)
 }
